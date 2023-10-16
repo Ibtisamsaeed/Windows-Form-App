@@ -130,7 +130,6 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 25;
-            listBox1.Items.AddRange(new object[] { "Computer Science", "Mathematics", "Data Science", "Machine Learning", "Software Engineering" });
             listBox1.Location = new Point(197, 275);
             listBox1.Name = "listBox1";
             listBox1.SelectionMode = SelectionMode.MultiSimple;

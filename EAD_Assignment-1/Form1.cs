@@ -1,10 +1,42 @@
+using System.Collections;
+
 namespace EAD_Assignment_1
 {
     public partial class Form1 : Form
     {
+        private List<string> itemsList = new List<string>();
+        private ArrayList textBoxList = new ArrayList();
         public Form1()
         {
             InitializeComponent();
+            InitializeTextBoxes();
+            InitializeList();
+        }
+
+        private void InitializeTextBoxes()
+        {
+            textBoxList.Add(txtFirstName);
+            textBoxList.Add(txtLastName);
+        }
+
+        private void InitializeList()
+        {
+            itemsList.Add("Machine Learning");
+            itemsList.Add("Aritificial Intelligence");
+            itemsList.Add("Web Engineering");
+            itemsList.Add("Mobile Application Development");
+            itemsList.Add("Enterprise Application Development");
+            UpdateListBox();
+        }
+
+        private void UpdateListBox()
+        {
+            listBox1.Items.Clear();
+
+            foreach (string item in itemsList)
+            {
+                listBox1.Items.Add(item);
+            }
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -27,13 +59,18 @@ namespace EAD_Assignment_1
                 txtFirstNameEmpty.Visible = false;
                 txtLastNameEmpty.Visible = false;
                 textBoxAgreement.Visible = false;
-                string firstName = txtFirstName.Text;
-                string lastName = txtLastName.Text;
+
+                string name = "";
+                foreach (TextBox textBox in textBoxList)
+                {
+                    name += textBox.Text.ToString().Trim();
+                    name += " ";
+                }
+
                 bool prerequisiteClear = chkAcceptance.Checked;
                 List<String> subject_list = cmbSubjectSelection.Items.Cast<String>().ToList();
 
-                listBoxResult.Items.Add($"First Name: {firstName}\n");
-                listBoxResult.Items.Add($"Last Name: {lastName}\n");
+                listBoxResult.Items.Add($"Name: {name}\n");
                 listBoxResult.Items.Add($"Selected Subjects: ");
                 foreach (string subject in subject_list)
                 {
