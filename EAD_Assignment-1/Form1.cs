@@ -58,6 +58,7 @@ namespace EAD_Assignment_1
             {
                 cmbSubjectSelection.Items.Add(selected.ToString());
             }
+            cmbSubjectSelection.SelectedIndex = 0;
         }
 
         private void cmbSubjectSelection_DropDown(object sender, EventArgs e)
